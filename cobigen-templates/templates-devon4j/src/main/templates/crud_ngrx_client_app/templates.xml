@@ -43,15 +43,15 @@
       <incrementRef ref="devon4ng-rx-i18n" />
       <incrementRef ref="devon4ng-rx-component" />
     </increment>
-    <increment name="devon4ng-rx-env" description="Angular rxjs URL">
+    <increment name="devon4ng-rx-env" description="Angular rxjs URL" explanation="Generates URL settings for the Project.">
       <templateRef ref="environment.ts" />
       <templateRef ref="environment.prod.ts" />
     </increment>
-    <increment name="devon4ng-rx-i18n" description="Angular rxjs i18n">
+    <increment name="devon4ng-rx-i18n" description="Angular rxjs i18n" explanation="Creates files with text translations to support internationalization.">
       <templateRef ref="es.json" />
       <templateRef ref="en.json" />
     </increment>
-    <increment name="devon4ng-rx-component" description="Angular rxjs component">
+    <increment name="devon4ng-rx-component" description="Angular rxjs component" explanation="Generates the rxjs components for the Project.">
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.html" />
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.ts" />
       <templateRef ref="${variables.etoName#lower_case}-grid.component.html" />

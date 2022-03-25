@@ -32,12 +32,12 @@
     <increment name="springdata-repository" description="CRUD SpringData Repository" explanation="Creates necessary interfaces and methods for the SpringData Repository to interact with the database.">
       <templateRef ref="${variables.entityName}Repository.java" />
     </increment>
-    <increment name="tos" description="TO's">
+    <increment name="tos" description="TO's" explanation="Generates Transfer Objects.">
       <templateRef ref="AbstractSearchCriteriaTo.java" />
       <templateRef ref="${variables.entityName}Eto.java" />
       <templateRef ref="${variables.entityName}SearchCriteriaTo.java" />
     </increment>
-    <increment name="ctos" description="CTO's">
+    <increment name="ctos" description="CTO's" explanation="Creates composite transfer object (CTO) named «BusinessObject»«Subset»Cto.">
       <templateRef ref="${variables.entityName}Cto.java" />
     </increment>
     <!-- <increment name="logic_impl" description="CRUD logic (all in one)">
@@ -46,19 +46,19 @@
       <templateRef ref="${variables.component#cap_first}Impl.java"/>
       <templateRef ref="${variables.component#cap_first}.java"/>
     </increment>-->
-    <increment name="dataaccess_infrastructure" description="Entity infrastructure">
+    <increment name="dataaccess_infrastructure" description="Entity infrastructure" explanation="Generates Entity infrastructure for the Project.">
       <templateRef ref="ApplicationPersistenceEntity.java" />
       <templateRef ref="ApplicationEntity.java" />
       <templateRef ref="${variables.entityName}Entity.java" />
       <templateRef ref="${variables.entityName}.java" />
     </increment>
-    <increment name="rest_service_impl" description="CRUD REST services">
+    <increment name="rest_service_impl" description="CRUD REST services" explanation="Generates a REST service for the Project.">
       <templateRef ref="AbstractBeanMapperSupport.java" />
       <templateRef ref="AbstractComponentFacade.java" />
       <templateRef ref="${variables.component#cap_first}RestServiceImpl.java" />
       <templateRef ref="${variables.component#cap_first}RestService.java" />
     </increment>
-    <increment name="rest_service_impl_ctos" description="CRUD REST services (CTOs)">
+    <increment name="rest_service_impl_ctos" description="CRUD REST services (CTOs)" explanation="Generates REST services for the composite transfer object (CTO).">
       <templateRef ref="AbstractBeanMapperSupport.java" />
       <templateRef ref="AbstractComponentFacade.java" />
       <templateRef ref="${variables.component#cap_first}RestServiceImplCtos.java" />

@@ -14,30 +14,30 @@
       <incrementRef ref="services" />
       <incrementRef ref="domain" />
     </increment>
-    <increment name="application" description="Application">
+    <increment name="application" description="Application" explanation="Generates entities and components for .Net application.">
       <templateRef ref="Startup.cs" />
       <templateRef ref="appsettings.Development.json" />
     </increment>
-    <increment name="controllers" description="Controllers">
+    <increment name="controllers" description="Controllers" explanation="Generates Controllers for .Net application.">
       <templateRef ref="${variables.component#cap_first}Controller.cs" />
     </increment>
-    <increment name="converter" description="Converter">
+    <increment name="converter" description="Converter" explanation="Generates a Converter for .Net application.">
       <templateRef ref="${variables.component#cap_first}Converter.cs" />
     </increment>
-    <increment name="dtos" description="DTO's">
+    <increment name="dtos" description="DTO's" explanation="Generates Data Transfer Object (DTO) named «BusinessObject»Dto.">
       <templateRef ref="${variables.entityName#replace('Dto', '')#cap_first}Dto.cs" />
       <templateRef ref="${variables.entityName#replace('Dto', '')#cap_first}ResponseDto.cs" />
     </increment>
-    <increment name="exceptions" description="Exceptions">
+    <increment name="exceptions" description="Exceptions" explanation="Generates runtime and other Exceptions.">
       <templateRef ref="${variables.entityName#cap_first}NotFoundException.cs" />
       <templateRef ref="${variables.entityName#cap_first}NotCreatedException.cs" />
       <templateRef ref="${variables.entityName#cap_first}NotDeletedException.cs" />
     </increment>
-    <increment name="services" description="Services">
+    <increment name="services" description="Services" explanation="Generates .Net Services.">
       <templateRef ref="I${variables.component#cap_first}Service.cs" />
       <templateRef ref="${variables.component#cap_first}Service.cs" />
     </increment>
-    <increment name="domain" description="Domain">
+    <increment name="domain" description="Domain" explanation="Generates a Domain for .Net application.">
       <templateRef ref="CobigenContext.cs" />
       <templateRef ref="${variables.entityName#cap_first}.cs" />
       <templateRef ref="I${variables.entityName#cap_first}Repository.cs" />

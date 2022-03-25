@@ -28,19 +28,19 @@
       <incrementRef ref="app_angular_devon4ng_component" />
       <incrementRef ref="app_angular_service_based" />
     </increment>
-    <increment name="app_angular_env" description="Server URL Registration">
+    <increment name="app_angular_env" description="Server URL Registration" explanation="Generates URL settings for the Server.">
       <templateRef ref="environment.ts" />
       <templateRef ref="environment.prod.ts" />
     </increment>
-    <increment name="app_angular_i18n" description="i18n">
+    <increment name="app_angular_i18n" description="i18n" explanation="Creates files with text translations to support internationalization.">
       <templateRef ref="es.json" />
       <templateRef ref="en.json" />
     </increment>
-    <increment name="app_angular_service_based" description="model">
+    <increment name="app_angular_service_based" description="model" explanation="Generates the OpenAPI model.">
       <templateRef ref="model.ts" />
       <templateRef ref="${variables.etoName#lower_case}.ts" />
     </increment>
-    <increment name="app_angular_devon4ng_component" description="View Component">
+    <increment name="app_angular_devon4ng_component" description="View Component" explanation="Generates the UI Components for the App.">
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.html" />
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.ts" />
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.spec.ts" />

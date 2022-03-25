@@ -19,11 +19,11 @@
       <incrementRef ref="app_angular_i18n" />
       <incrementRef ref="app_angular_devon4ng_component" />
     </increment>
-    <increment name="app_angular_i18n" description="Angular i18n">
+    <increment name="app_angular_i18n" description="Angular i18n" explanation="Create files with text translations to support internationalization.">
       <templateRef ref="es.json" />
       <templateRef ref="en.json" />
     </increment>
-    <increment name="app_angular_devon4ng_component" description="Angular devon4ng Component">
+    <increment name="app_angular_devon4ng_component" description="Angular devon4ng Component" explanation="Generates the needed Angular components for the project.">
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.html" />
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.ts" />
       <templateRef ref="${variables.etoName#lower_case}-dialog.component.spec.ts" />

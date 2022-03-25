@@ -38,7 +38,7 @@
       <templateRef ref="crud_complex_UcFind${variables.entityName}Impl.java" />
       <templateRef ref="crud_complex_UcManage${variables.entityName}Impl.java" />
     </increment>
-    <increment name="logic_complex_ctos" description="CRUD UC logic (CTOs)">
+    <increment name="logic_complex_ctos" description="CRUD UC logic (CTOs)" explanation="Creates the logic layer for the composite transfer objects (CTO’s).">
       <templateRef ref="crud_complex_AbstractUc.java" />
       <templateRef ref="crud_complex_Abstract${variables.entityName}Uc.java" />
       <templateRef ref="crud_complex_UcFind${variables.entityName}Ctos.java" />

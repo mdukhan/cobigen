@@ -32,19 +32,19 @@
       <incrementRef ref="ionic_component" />
       <incrementRef ref="ionic_theme" />
     </increment>
-    <increment name="app_ionic_structure" description="Ionic devon4ng environments">
+    <increment name="app_ionic_structure" description="Ionic devon4ng environments" explanation="Creates android environments for the App. ">
       <templateRef ref="environment.android.ts" />
       <templateRef ref="environment.prod.ts" />
       <templateRef ref="environment.ts" />
     </increment>
-    <increment name="ionic_routing" description="Ionic routing">
+    <increment name="ionic_routing" description="Ionic routing" explanation=" Generates RouterModule and Routes, so the application can have routing functionality.">
       <templateRef ref="app-routing.module.ts" />
     </increment>
-    <increment name="ionic_i18n" description="Ionic i18n">
+    <increment name="ionic_i18n" description="Ionic i18n" explanation="Create files with text translations to support internationalization.">
       <templateRef ref="es.json" />
       <templateRef ref="en.json" />
     </increment>
-    <increment name="ionic_component" description="Ionic List">
+    <increment name="ionic_component" description="Ionic List" explanation="Generates a list of useful variables and components.">
       <templateRef ref="${variables.etoName#lower_case}.ts" />
       <templateRef ref="${variables.etoName#lower_case}-search-criteria.ts" />
       <templateRef ref="paginated-list-to.ts" />
@@ -61,7 +61,7 @@
       <templateRef ref="${variables.etoName#lower_case}-detail.page.scss" />
       <templateRef ref="business-operator.service.ts" />
     </increment>
-    <increment name="ionic_theme" description="Ionic theme">
+    <increment name="ionic_theme" description="Ionic theme" explanation="Generates different themes, styles and colours to choose from.">
       <templateRef ref="variables.scss" />
     </increment>
   </increments>
