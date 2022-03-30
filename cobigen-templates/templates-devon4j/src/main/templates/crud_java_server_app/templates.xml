@@ -37,7 +37,7 @@
       <templateRef ref="${variables.entityName}Eto.java" />
       <templateRef ref="${variables.entityName}SearchCriteriaTo.java" />
     </increment>
-    <increment name="ctos" description="CTO's" explanation="Creates composite transfer object (CTO) named «BusinessObject»«Subset»Cto.">
+    <increment name="ctos" description="CTO's" explanation="Creates composite transfer object (CTO)">
       <templateRef ref="${variables.entityName}Cto.java" />
     </increment>
     <!-- <increment name="logic_impl" description="CRUD logic (all in one)">

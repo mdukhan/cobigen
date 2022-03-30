@@ -43,7 +43,7 @@
       <incrementRef ref="devon4ng-rx-i18n" />
       <incrementRef ref="devon4ng-rx-component" />
     </increment>
-    <increment name="devon4ng-rx-env" description="Angular rxjs URL" explanation="Generates URL settings for the Project.">
+    <increment name="devon4ng-rx-env" description="Angular rxjs URL" explanation="Generates URL settings with JWT authentication.">
       <templateRef ref="environment.ts" />
       <templateRef ref="environment.prod.ts" />
     </increment>

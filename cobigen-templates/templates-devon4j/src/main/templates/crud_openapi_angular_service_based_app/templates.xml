@@ -17,7 +17,7 @@
       <incrementRef ref="app_angular_env" />
       <incrementRef ref="app_angular_devon4j_component" />
     </increment>
-    <increment name="app_angular_env" description="Server URL Registration" explanation="Generates URL settings for the Server.">
+    <increment name="app_angular_env" description="Server URL Registration" explanation="Generates URL settings with JWT authentication.">
       <templateRef ref="environment.ts" />
       <templateRef ref="environment.prod.ts" />
     </increment>

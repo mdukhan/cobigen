@@ -32,7 +32,7 @@
       <incrementRef ref="ionic_component" />
       <incrementRef ref="ionic_theme" />
     </increment>
-    <increment name="app_ionic_structure" description="Ionic devon4ng environments" explanation="Creates android environments for the App. ">
+    <increment name="app_ionic_structure" description="Ionic devon4ng environments" explanation="Creates environment files to support different execution environments of the Angular App.">
       <templateRef ref="environment.android.ts" />
       <templateRef ref="environment.prod.ts" />
       <templateRef ref="environment.ts" />
@@ -44,7 +44,7 @@
       <templateRef ref="es.json" />
       <templateRef ref="en.json" />
     </increment>
-    <increment name="ionic_component" description="Ionic List" explanation="Generates a list of useful variables and components.">
+    <increment name="ionic_component" description="Ionic List" explanation="Generates a list and details views for an entity or eto.">
       <templateRef ref="${variables.etoName#lower_case}.ts" />
       <templateRef ref="${variables.etoName#lower_case}-search-criteria.ts" />
       <templateRef ref="paginated-list-to.ts" />

@@ -24,7 +24,7 @@
     <increment name="converter" description="Converter" explanation="Generates a Converter for .Net application.">
       <templateRef ref="${variables.component#cap_first}Converter.cs" />
     </increment>
-    <increment name="dtos" description="DTO's" explanation="Generates Data Transfer Object (DTO) named «BusinessObject»Dto.">
+    <increment name="dtos" description="DTO's" explanation="Generates Data Transfer Object (DTO).">
       <templateRef ref="${variables.entityName#replace('Dto', '')#cap_first}Dto.cs" />
       <templateRef ref="${variables.entityName#replace('Dto', '')#cap_first}ResponseDto.cs" />
     </increment>

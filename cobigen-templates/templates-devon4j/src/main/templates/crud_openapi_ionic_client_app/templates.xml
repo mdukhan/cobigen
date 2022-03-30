@@ -49,7 +49,7 @@
       <templateRef ref="en.json" />
       <templateRef ref="it.json" />
     </increment>
-    <increment name="ionic_component" description="Ionic List" explanation="Generates a list of useful variables and components.">
+    <increment name="ionic_component" description="Ionic List" explanation="Generates a list and details views for an entity or eto.">
       <templateRef ref="${variables.etoName#lower_case}.ts" />
       <templateRef ref="${variables.etoName#lower_case}-search-criteria.ts" />
       <templateRef ref="paginated-list-to.ts" />
