@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="2.3">
+<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="3">
   <trigger id="crud_openapi_net" type="openapi">
-    <containerMatcher type="element" value="openAPIFile"/>
+    <containerMatcher type="element" value="openAPIFile" />
     <matcher type="element" value="EntityDef">
-      <variableAssignment type="extension" key="rootPackage" value="x-rootpackage"/>
-      <variableAssignment type="property" key="component" value="componentName"/>
-      <variableAssignment type="property" key="entityName" value="name"/>
+      <variableAssignment type="extension" key="rootPackage" value="x-rootpackage" />
+      <variableAssignment type="property" key="component" value="componentName" />
+      <variableAssignment type="property" key="entityName" value="name" />
     </matcher>
   </trigger>
+  <tags>
+    <tag name="OpenAPI .Net Application"></tag>
+  </tags>
   <links>
-<link url="https://github.com/devonfw/cobigen/wiki/howto_devon4net">
-</link>
+    <link url="https://github.com/devonfw/cobigen/wiki/howto_devon4net"></link>
   </links>
 </contextConfiguration>

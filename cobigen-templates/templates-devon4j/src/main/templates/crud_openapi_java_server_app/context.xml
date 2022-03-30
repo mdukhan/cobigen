@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="2.3">
+<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="3">
   <trigger id="crud_openapi_java_server_app" type="openapi">
     <containerMatcher type="element" value="openAPIFile" />
     <matcher type="element" value="EntityDef">
@@ -7,7 +7,10 @@
       <variableAssignment type="property" key="component" value="componentName" />
       <variableAssignment type="property" key="entityName" value="name" />
     </matcher>
-  </trigger>
+  </trigger
+  <tags>
+    <tag name="OpenAPI Java"></tag>
+  </tags>
   <links>
     <link url="https://github.com/devonfw/cobigen/wiki/howto-devonfw-ide-CobiGen-PoC-E2E"></link>
   </links>

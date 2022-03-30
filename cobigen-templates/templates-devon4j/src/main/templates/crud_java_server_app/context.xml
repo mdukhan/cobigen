@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="2.3">
+<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="3">
   <trigger id="crud_java_server_app" type="java">
     <containerMatcher type="package" value="((.+\.)?([^\.]+))\.([^\.]+)\.dataaccess\.api" retrieveObjectsRecursively="false" />
     <matcher type="fqn" value="((.+\.)?([^\.]+))\.([^\.]+)\.dataaccess\.api\.([^\.]+)Entity">
@@ -9,6 +9,9 @@
       <variableAssignment type="regex" key="entityName" value="5" />
     </matcher>
   </trigger>
+  <tags>
+    <tag name="Spring Framework"></tag>
+  </tags>
   <links>
     <link url="https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html"></link>
   </links>

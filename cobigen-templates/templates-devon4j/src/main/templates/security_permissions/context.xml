@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="2.3">
+<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="3">
   <trigger id="constants_security_permissions" type="xml">
     <matcher type="nodename" value="access-control-schema">
       <variableAssignment type="constant" key="rootPackage" value="com.devonfw.gastronomy.restaurant" />
@@ -8,4 +8,7 @@
   <links>
     <link url="https://github.com/devonfw/devon4j/wiki/tutorial-security#securing-methods"></link>
   </links>
+  <tags>
+    <tag name="Java"></tag>
+  </tags>
 </contextConfiguration>

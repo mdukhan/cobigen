@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="2.3">
+<contextConfiguration xmlns="http://capgemini.com/devonfw/cobigen/ContextConfiguration" version="3">
   <trigger id="testdata_builder" type="java">
     <containerMatcher type="package" value="((.+\.)?([^\.]+))\.([^\.]+)\.dataaccess\.api" retrieveObjectsRecursively="false" />
     <matcher type="fqn" value="((.+\.)?([^\.]+))\.([^\.]+)\.dataaccess\.api\.([^\.]+Entity)">
@@ -17,6 +17,9 @@
     <matcher type="expression" value="instanceof java.lang.Enum" accumulationType="NOT" />
     <matcher type="expression" value="isAbstract" accumulationType="NOT" />
   </trigger>
+  <tags>
+    <tag name="Java"></tag>
+  </tags>
   <links>
     <link url="https://github.com/devonfw/cobigen/wiki/cobigen-usecases#test-data-builder-for-devon4j"></link>
   </links>
