@@ -2,6 +2,9 @@ package com.devonfw.cobigen.impl.config.upgrade;
 
 import java.math.BigDecimal;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.devonfw.cobigen.api.constants.ConfigurationConstants;
 import com.devonfw.cobigen.api.exception.NotYetSupportedException;
 import com.devonfw.cobigen.impl.config.constant.TemplatesConfigurationVersion;
@@ -36,6 +39,9 @@ public class TemplateConfigurationUpgrader extends AbstractConfigurationUpgrader
         ConfigurationConstants.TEMPLATES_CONFIG_FILENAME);
   }
 
+  /** Logger instance. */
+  private static final Logger LOG = LoggerFactory.getLogger(TemplateConfigurationUpgrader.class);
+
   @Override
   protected ConfigurationUpgradeResult performNextUpgradeStep(TemplatesConfigurationVersion source,
       Object previousConfigurationRootNode) throws Exception {
@@ -43,27 +49,29 @@ public class TemplateConfigurationUpgrader extends AbstractConfigurationUpgrader
     ConfigurationUpgradeResult result = new ConfigurationUpgradeResult();
 
     switch (source) {
-      case v1_2: // to v2.1
+      case v1_2:
+      case v4_0:// to v5.0
       {
+        LOG.debug("!!!!!!!!!!!!!!!!!!!!!!" + source.toString() + "!!!!!!!!!!!!!!!!!!!!!!!");
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().mapNulls(true).useAutoMapping(true).build();
-        mapperFactory.classMap(Template.class, com.devonfw.cobigen.impl.config.entity.io.v2_1.Template.class)
+        mapperFactory.classMap(Template.class, com.devonfw.cobigen.impl.config.entity.io.v5_0.Template.class)
             .field("id", "name").byDefault().register();
-        mapperFactory.classMap(Increment.class, com.devonfw.cobigen.impl.config.entity.io.v2_1.Increment.class)
+        mapperFactory.classMap(Increment.class, com.devonfw.cobigen.impl.config.entity.io.v5_0.Increment.class)
             .field("id", "name").field("templateRefOrIncrementRef", "templateRefOrIncrementRefOrTemplateScanRef")
             .byDefault().register();
         mapperFactory
-            .classMap(TemplateExtension.class, com.devonfw.cobigen.impl.config.entity.io.v2_1.TemplateExtension.class)
+            .classMap(TemplateExtension.class, com.devonfw.cobigen.impl.config.entity.io.v5_0.TemplateExtension.class)
             .field("idref", "ref").byDefault().register();
-        mapperFactory.classMap(TemplateScan.class, com.devonfw.cobigen.impl.config.entity.io.v2_1.TemplateScan.class)
+        mapperFactory.classMap(TemplateScan.class, com.devonfw.cobigen.impl.config.entity.io.v5_0.TemplateScan.class)
             .field("templateIdPrefix", "templateNamePrefix").byDefault().register();
-        mapperFactory.classMap(TemplateRef.class, com.devonfw.cobigen.impl.config.entity.io.v2_1.TemplateRef.class)
+        mapperFactory.classMap(TemplateRef.class, com.devonfw.cobigen.impl.config.entity.io.v5_0.TemplateRef.class)
             .field("idref", "ref").byDefault().register();
-        mapperFactory.classMap(IncrementRef.class, com.devonfw.cobigen.impl.config.entity.io.v2_1.IncrementRef.class)
+        mapperFactory.classMap(IncrementRef.class, com.devonfw.cobigen.impl.config.entity.io.v5_0.IncrementRef.class)
             .field("idref", "ref").byDefault().register();
         MapperFacade mapper = mapperFactory.getMapperFacade();
-        com.devonfw.cobigen.impl.config.entity.io.v2_1.TemplatesConfiguration upgradedConfig = mapper.map(
-            previousConfigurationRootNode, com.devonfw.cobigen.impl.config.entity.io.v2_1.TemplatesConfiguration.class);
-        upgradedConfig.setVersion(new BigDecimal("2.1"));
+        com.devonfw.cobigen.impl.config.entity.io.v5_0.TemplatesConfiguration upgradedConfig = mapper.map(
+            previousConfigurationRootNode, com.devonfw.cobigen.impl.config.entity.io.v5_0.TemplatesConfiguration.class);
+        upgradedConfig.setVersion(new BigDecimal("5.0"));
 
         result.setResultConfigurationJaxbRootNode(upgradedConfig);
       }
