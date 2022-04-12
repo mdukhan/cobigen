@@ -12,4 +12,7 @@
   <tags>
     <tag name="Java"></tag>
   </tags>
+  <links>
+    <link url="https://github.com/devonfw/devon4j/wiki/guide-logic-layer"></link>
+  </links>
 </contextConfiguration>

@@ -13,6 +13,6 @@
     <tag name="Spring Framework"></tag>
   </tags>
   <links>
-    <link url="https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html"></link>
+    <link url="https://github.com/devonfw/devon4j/wiki/architecture"></link>
   </links>
 </contextConfiguration>

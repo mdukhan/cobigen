@@ -10,4 +10,7 @@
   <tags>
     <tag name="TypeScript Angular"></tag>
   </tags>
+  <links>
+    <link url="https://github.com/devonfw/devon4ng/wiki#angular"></link>
+  </links>
 </contextConfiguration>

@@ -11,4 +11,7 @@
   <tags>
     <tag name="Java Entity"></tag>
   </tags>
+  <links>
+    <link url="https://github.com/devonfw/devon4j/wiki/guide-jpa#entity"></link>
+  </links>
 </contextConfiguration>

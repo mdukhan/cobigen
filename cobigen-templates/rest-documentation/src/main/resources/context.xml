@@ -11,4 +11,7 @@
   <tags>
     <tag name="REST"></tag>
   </tags>
+  <links>
+    <link url="https://github.com/devonfw/devon4j/blob/master/documentation/guide-rest.asciidoc"></link>
+  </links>
 </contextConfiguration>

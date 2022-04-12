@@ -12,6 +12,6 @@
     <tag name="rxjs Angular"></tag>
   </tags>
   <links>
-    <link url="https://rxjs.dev/api"></link>
+    <link url="https://github.com/devonfw/devon4ng/wiki#ngrx"></link>
   </links>
 </contextConfiguration>
