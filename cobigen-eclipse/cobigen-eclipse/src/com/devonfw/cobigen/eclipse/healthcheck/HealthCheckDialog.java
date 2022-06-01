@@ -16,6 +16,7 @@ import com.devonfw.cobigen.api.HealthCheck;
 import com.devonfw.cobigen.api.constants.BackupPolicy;
 import com.devonfw.cobigen.api.constants.ConfigurationConstants;
 import com.devonfw.cobigen.api.exception.InvalidConfigurationException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.to.HealthCheckReport;
 import com.devonfw.cobigen.api.util.CobiGenPaths;
 import com.devonfw.cobigen.api.util.TemplatesJarUtil;
@@ -194,8 +195,10 @@ public class HealthCheckDialog {
    *
    * @param healthyCheckMessage message to be shown to the user
    * @param warn if the message box should be displayed as a warning
+   * @throws UpgradeTemplatesNotificationException
    */
-  private void openSuccessDialog(String healthyCheckMessage, boolean warn) {
+  private void openSuccessDialog(String healthyCheckMessage, boolean warn)
+      throws UpgradeTemplatesNotificationException {
 
     MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(), HealthCheckDialogs.DIALOG_TITLE,
         null, healthyCheckMessage, warn ? MessageDialog.WARNING : MessageDialog.INFORMATION,
@@ -230,8 +233,10 @@ public class HealthCheckDialog {
    * @return HealthCheckReport the {@link HealthCheckReport} created by the HealthCheck
    * @throws GeneratorProjectNotExistentException if no generator configuration project called
    * @throws CoreException if an existing generator configuration project could not be opened
+   * @throws UpgradeTemplatesNotificationException
    */
-  private HealthCheckReport performHealthCheckReport() throws GeneratorProjectNotExistentException, CoreException {
+  private HealthCheckReport performHealthCheckReport()
+      throws GeneratorProjectNotExistentException, CoreException, UpgradeTemplatesNotificationException {
 
     // check configuration project existence in workspace
     IPath ws = ResourcesPluginUtil.getGeneratorConfigurationProject().getLocation();

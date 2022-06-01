@@ -19,6 +19,8 @@ import com.devonfw.cobigen.api.InputInterpreter;
 import com.devonfw.cobigen.api.constants.MavenConstants;
 import com.devonfw.cobigen.api.exception.CobiGenRuntimeException;
 import com.devonfw.cobigen.api.exception.InputReaderException;
+import com.devonfw.cobigen.api.exception.InvalidConfigurationException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.to.IncrementTo;
 import com.devonfw.cobigen.api.to.TemplateTo;
 import com.devonfw.cobigen.api.util.CobiGenPaths;
@@ -49,8 +51,11 @@ public class CobiGenUtils {
    *
    * @param templatesProject the templates project or jar
    * @return object of CobiGen
+   * @throws UpgradeTemplatesNotificationException
+   * @throws InvalidConfigurationException
    */
-  public static CobiGen initializeCobiGen(Path templatesProject) {
+  public static CobiGen initializeCobiGen(Path templatesProject)
+      throws InvalidConfigurationException, UpgradeTemplatesNotificationException {
 
     registerPlugins();
     if (templatesProject != null) {

@@ -4,6 +4,7 @@ import java.nio.file.Path;
 
 import com.devonfw.cobigen.api.annotation.ExceptionFacade;
 import com.devonfw.cobigen.api.constants.BackupPolicy;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.to.HealthCheckReport;
 
 /**
@@ -47,13 +48,14 @@ public interface HealthCheck {
    *        validity. Further changes of the path might be necessary for further adaption to different plug-ins.
    * @return the {@link HealthCheckReport} created by the HealthCheck
    */
-  HealthCheckReport perform(Path configurationPath);
+  HealthCheckReport perform(Path configurationPath) throws UpgradeTemplatesNotificationException;
 
   /**
    * Performs a health check of the CobiGen plug-in and automatically downwloads the latest CobiGen_Templates jar.
    *
    * @return the {@link HealthCheckReport} created by the HealthCheck
+   * @throws UpgradeTemplatesNotificationException
    */
-  HealthCheckReport perform();
+  HealthCheckReport perform() throws UpgradeTemplatesNotificationException;
 
 }

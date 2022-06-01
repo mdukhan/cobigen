@@ -16,6 +16,7 @@ import com.devonfw.cobigen.api.HealthCheck;
 import com.devonfw.cobigen.api.constants.BackupPolicy;
 import com.devonfw.cobigen.api.constants.ConfigurationConstants;
 import com.devonfw.cobigen.api.exception.CobiGenRuntimeException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.to.HealthCheckReport;
 import com.devonfw.cobigen.impl.config.ContextConfiguration;
 import com.devonfw.cobigen.impl.config.constant.TemplatesConfigurationVersion;
@@ -119,7 +120,7 @@ public class HealthCheckImpl implements HealthCheck {
   }
 
   @Override
-  public HealthCheckReport perform(Path configurationPath) {
+  public HealthCheckReport perform(Path configurationPath) throws UpgradeTemplatesNotificationException {
 
     // 1. Get configuration resources
     // determine expected template configurations to be defined
@@ -189,7 +190,7 @@ public class HealthCheckImpl implements HealthCheck {
   }
 
   @Override
-  public HealthCheckReport perform() {
+  public HealthCheckReport perform() throws UpgradeTemplatesNotificationException {
 
     URI templatesJarFile = ConfigurationFinder.findTemplatesLocation();
     HealthCheckReport report = null;

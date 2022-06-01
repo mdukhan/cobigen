@@ -25,6 +25,7 @@ import org.slf4j.MDC;
 
 import com.devonfw.cobigen.api.HealthCheck;
 import com.devonfw.cobigen.api.constants.BackupPolicy;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.to.HealthCheckReport;
 import com.devonfw.cobigen.eclipse.Activator;
 import com.devonfw.cobigen.eclipse.common.constants.InfrastructureConstants;
@@ -141,7 +142,12 @@ public class AdvancedHealthCheckDialog extends Dialog {
               MDC.put(InfrastructureConstants.CORRELATION_ID, UUID.randomUUID().toString());
               AdvancedHealthCheckDialog.this.healthCheck.upgradeTemplatesConfiguration(
                   AdvancedHealthCheckDialog.this.upgradeableConfigurations.get(key), BackupPolicy.BACKUP_IF_POSSIBLE);
-              refreshUI();
+              try {
+                refreshUI();
+              } catch (UpgradeTemplatesNotificationException e1) {
+                // create New UI Dialog for healthcheck
+                PlatformUIUtil.openErrorDialog("You are using an old Templates version!", e1);
+              }
               MDC.remove(InfrastructureConstants.CORRELATION_ID);
             }
           });
@@ -181,8 +187,10 @@ public class AdvancedHealthCheckDialog extends Dialog {
 
   /**
    * Refreshes the UI to show the updated configuration.
+   *
+   * @throws UpgradeTemplatesNotificationException
    */
-  private void refreshUI() {
+  private void refreshUI() throws UpgradeTemplatesNotificationException {
 
     try {
       if (ResourcesPluginUtil.getGeneratorConfigurationProject().getLocation() != null) {

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.devonfw.cobigen.api.CobiGen;
 import com.devonfw.cobigen.api.HealthCheck;
 import com.devonfw.cobigen.api.exception.InvalidConfigurationException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.impl.aop.BeanFactory;
 import com.devonfw.cobigen.impl.aop.ProxyFactory;
 import com.devonfw.cobigen.impl.config.ConfigurationHolder;
@@ -68,8 +69,9 @@ public class CobiGenFactory {
    *
    * @return a new instance of {@link CobiGen}
    * @throws InvalidConfigurationException if the context configuration could not be read properly.
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static CobiGen create() throws InvalidConfigurationException {
+  public static CobiGen create() throws InvalidConfigurationException, UpgradeTemplatesNotificationException {
 
     URI configFileOrFolder = ConfigurationFinder.findTemplatesLocation();
     if (configFileOrFolder == null) {

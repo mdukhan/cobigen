@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import com.devonfw.cobigen.api.TemplateAdapter;
 import com.devonfw.cobigen.api.constants.ConfigurationConstants;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.util.CobiGenPaths;
 import com.devonfw.cobigen.api.util.TemplatesJarUtil;
 import com.devonfw.cobigen.eclipse.common.constants.external.ResourceConstants;
@@ -55,9 +56,13 @@ public class ResourcesPluginUtil {
 
   /**
    * Refreshes the configuration project from the file system.
+   *
+   * @throws UpgradeTemplatesNotificationException
+   * @throws GeneratorProjectNotExistentException
    */
 
-  public static void refreshConfigurationProject() {
+  public static void refreshConfigurationProject()
+      throws GeneratorProjectNotExistentException, UpgradeTemplatesNotificationException {
 
     try {
       isUpdateDialogShown = false;
@@ -80,8 +85,10 @@ public class ResourcesPluginUtil {
    * @throws GeneratorProjectNotExistentException if no generator configuration project called
    *         {@link ResourceConstants#CONFIG_PROJECT_NAME} exists
    * @throws CoreException if an existing generator configuration project could not be opened
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static IProject getGeneratorConfigurationProject() throws GeneratorProjectNotExistentException, CoreException {
+  public static IProject getGeneratorConfigurationProject()
+      throws GeneratorProjectNotExistentException, CoreException, UpgradeTemplatesNotificationException {
 
     File templatesDirectory = getTemplatesDirectory();
 
@@ -141,8 +148,10 @@ public class ResourcesPluginUtil {
    * @return fileName Name of the file downloaded
    * @throws MalformedURLException {@link MalformedURLException} occurred
    * @throws IOException {@link IOException} occurred
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static String downloadJar(boolean isDownloadSource) throws MalformedURLException, IOException {
+  public static String downloadJar(boolean isDownloadSource)
+      throws MalformedURLException, IOException, UpgradeTemplatesNotificationException {
 
     String fileName = "";
 
@@ -165,8 +174,9 @@ public class ResourcesPluginUtil {
    *
    * @param isSource true if we want to get source jar file path
    * @return fileName Name of the jar downloaded or null if it was not found
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static String getJarPath(boolean isSource) {
+  public static String getJarPath(boolean isSource) throws UpgradeTemplatesNotificationException {
 
     File templatesDirectory = getTemplatesDirectory();
 
@@ -186,7 +196,7 @@ public class ResourcesPluginUtil {
    *
    * @return the templateDirectory
    */
-  private static File getTemplatesDirectory() {
+  private static File getTemplatesDirectory() throws UpgradeTemplatesNotificationException {
 
     File templatesDirectory = CobiGenPaths.getTemplatesFolderPath().toFile();
     return templatesDirectory;
@@ -199,8 +209,10 @@ public class ResourcesPluginUtil {
    * @param fileName Name of source jar file downloaded
    * @throws IOException {@link IOException} occurred
    * @throws MalformedURLException {@link MalformedURLException} occurred
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static void processJar(String fileName) throws MalformedURLException, IOException {
+  public static void processJar(String fileName)
+      throws MalformedURLException, IOException, UpgradeTemplatesNotificationException {
 
     String pathForCobigenTemplates = "";
     IPath ws = ResourcesPluginUtil.getWorkspaceLocation();

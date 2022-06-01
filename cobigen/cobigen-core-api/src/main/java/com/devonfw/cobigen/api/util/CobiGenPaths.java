@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.devonfw.cobigen.api.constants.ConfigurationConstants;
 import com.devonfw.cobigen.api.exception.CobiGenRuntimeException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 
 /**
  * Utilities related to the cobigen configurations including:
@@ -58,8 +59,9 @@ public class CobiGenPaths {
    * if it does not exist. Instead CobiGen will switch to the template sets folder.
    *
    * @return {@link Path} of the templates home directory
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static Path getTemplatesFolderPath() {
+  public static Path getTemplatesFolderPath() throws UpgradeTemplatesNotificationException {
 
     return getTemplatesFolderPath(getCobiGenHomePath());
   }
@@ -71,11 +73,11 @@ public class CobiGenPaths {
    * @param home cobigen configuration home directory
    * @return {@link Path} of the templates home directory
    */
-  public static Path getTemplatesFolderPath(Path home) {
+  public static Path getTemplatesFolderPath(Path home) throws UpgradeTemplatesNotificationException {
 
     Path templatesPath = home.resolve(ConfigurationConstants.TEMPLATES_FOLDER);
     if (Files.exists(templatesPath))
-      LOG.warn("You are using an old templates version, please make sure to upgrade to the newest one!");
+      throw new UpgradeTemplatesNotificationException();
     return templatesPath;
   }
 
@@ -84,8 +86,9 @@ public class CobiGenPaths {
    * created
    *
    * @return {@link Path} of the templates home directory
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static Path getTemplateSetsFolderPath() {
+  public static Path getTemplateSetsFolderPath() throws UpgradeTemplatesNotificationException {
 
     return getTemplateSetsFolderPath(getCobiGenHomePath(), false);
   }
@@ -97,8 +100,9 @@ public class CobiGenPaths {
    * @param createFolder if true, the directory is also created
    *
    * @return {@link Path} of the templates home directory
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static Path getTemplateSetsFolderPath(boolean createFolder) {
+  public static Path getTemplateSetsFolderPath(boolean createFolder) throws UpgradeTemplatesNotificationException {
 
     return getTemplateSetsFolderPath(getCobiGenHomePath(), createFolder);
   }
@@ -109,8 +113,9 @@ public class CobiGenPaths {
    *
    * @param home cobigen configuration home directory
    * @return {@link Path} of the template sets home directory
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static Path getTemplateSetsFolderPath(Path home) {
+  public static Path getTemplateSetsFolderPath(Path home) throws UpgradeTemplatesNotificationException {
 
     return getTemplateSetsFolderPath(home, false);
   }

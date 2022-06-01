@@ -45,8 +45,10 @@ public class TemplateAdapterImpl implements TemplateAdapter {
   /**
    * Creates a new {@link TemplateAdapter} instance. The location of the templates is not specified, so the location is
    * searched by the core module itself.
+   *
+   * @throws UpgradeTemplatesNotificationException
    */
-  public TemplateAdapterImpl() {
+  public TemplateAdapterImpl() throws UpgradeTemplatesNotificationException {
 
     Path templatesLocationPath = CobiGenPaths.getTemplateSetsFolderPath(false);
     if (Files.exists(templatesLocationPath)) {

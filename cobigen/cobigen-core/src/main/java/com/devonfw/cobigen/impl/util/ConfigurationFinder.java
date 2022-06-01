@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import com.devonfw.cobigen.api.constants.ConfigurationConstants;
 import com.devonfw.cobigen.api.exception.InvalidConfigurationException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.util.CobiGenPaths;
 import com.devonfw.cobigen.api.util.TemplatesJarUtil;
 import com.devonfw.cobigen.impl.config.TemplateSetConfiguration;
@@ -76,8 +77,9 @@ public class ConfigurationFinder {
    * The method finds location of templates. It could be CobiGen_Templates folder or a template artifact
    *
    * @return template location uri if exist, otherwise null
+   * @throws UpgradeTemplatesNotificationException
    */
-  public static URI findTemplatesLocation() {
+  public static URI findTemplatesLocation() throws UpgradeTemplatesNotificationException {
 
     Path cobigenHome = CobiGenPaths.getCobiGenHomePath();
     Path configFile = cobigenHome.resolve(ConfigurationConstants.COBIGEN_CONFIG_FILE);
@@ -91,7 +93,6 @@ public class ConfigurationFinder {
       // use old templates configuration
       Path templatesFolderLocation = getTemplatesFolderLocation(cobigenHome, configFile, templatesLocation);
       if (templatesFolderLocation != null && Files.exists(templatesFolderLocation)) {
-        LOG.warn("You are using an old templates version, please make sure to upgrade to the newest two!");
         return templatesFolderLocation.toUri();
       }
 
@@ -114,8 +115,10 @@ public class ConfigurationFinder {
    * @param cobigenHome Path of CobiGen home directory
    * @param configFile Path of configuration file
    * @param templatesLocation String of templatesLocation property
+   * @throws UpgradeTemplatesNotificationException
    */
-  private static Path getTemplatesFolderLocation(Path cobigenHome, Path configFile, String templatesLocation) {
+  private static Path getTemplatesFolderLocation(Path cobigenHome, Path configFile, String templatesLocation)
+      throws UpgradeTemplatesNotificationException {
 
     if (StringUtils.isNotEmpty(templatesLocation)) {
       LOG.info("Custom templates path found. Taking templates from {}", templatesLocation);
@@ -164,8 +167,9 @@ public class ConfigurationFinder {
    *
    * @param home CobiGen configuration home directory
    * @return templates / template sets location if found, otherwise null
+   * @throws UpgradeTemplatesNotificationException
    */
-  private static URI findTemplates(Path home) {
+  private static URI findTemplates(Path home) throws UpgradeTemplatesNotificationException {
 
     Path templatesPath = CobiGenPaths.getTemplatesFolderPath(home);
     Path templatesFolderPath = templatesPath.resolve(ConfigurationConstants.COBIGEN_TEMPLATES);

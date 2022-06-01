@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 
 import com.devonfw.cobigen.api.CobiGen;
 import com.devonfw.cobigen.api.exception.InputReaderException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.to.GenerableArtifact;
 import com.devonfw.cobigen.api.to.GenerationReportTo;
 import com.devonfw.cobigen.api.to.IncrementTo;
@@ -101,6 +102,9 @@ public class GenerateCommand extends CommandCommons {
     }
 
     LOG.debug("Input files and output root path confirmed to be valid.");
+    // Here UpgradeTemplatesNotificationException will be thrown
+    // for CLI it is enough to show the error message for now no need to catch
+    // this might be changed later
     CobiGen cg = CobiGenUtils.initializeCobiGen(this.templatesProject);
 
     resolveTemplateDependencies();
@@ -125,8 +129,9 @@ public class GenerateCommand extends CommandCommons {
    * Resolves dependencies from templates
    *
    * @throws IOException
+   * @throws UpgradeTemplatesNotificationException
    */
-  private void resolveTemplateDependencies() throws IOException {
+  private void resolveTemplateDependencies() throws IOException, UpgradeTemplatesNotificationException {
 
     Path templatesPath = null;
     Path pomFile = null;

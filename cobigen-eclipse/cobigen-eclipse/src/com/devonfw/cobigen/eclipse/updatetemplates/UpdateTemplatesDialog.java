@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import com.devonfw.cobigen.api.exception.CobiGenRuntimeException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.eclipse.common.constants.InfrastructureConstants;
 import com.devonfw.cobigen.eclipse.common.constants.external.CobiGenDialogConstants.UpdateTemplateDialogs;
 import com.devonfw.cobigen.eclipse.common.tools.PlatformUIUtil;
@@ -138,6 +139,10 @@ public class UpdateTemplatesDialog extends Dialog {
               "Templates were not downloaded because there is no connection." + " Are you connected to the Internet? ",
               exceptionIO);
           throw new CobiGenRuntimeException("Failed while reading or writing Jar at .metadata folder" + exceptionIO);
+        } catch (UpgradeTemplatesNotificationException e1) {
+          // Update the templates ? or Upgrade ?
+          // For now just show errorDialog
+          PlatformUIUtil.openErrorDialog("You are using an old Templates version!", e1);
         }
       }
     });

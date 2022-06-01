@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
 
 import com.devonfw.cobigen.api.CobiGen;
 import com.devonfw.cobigen.api.exception.InvalidConfigurationException;
+import com.devonfw.cobigen.api.exception.UpgradeTemplatesNotificationException;
 import com.devonfw.cobigen.api.util.CobiGenPaths;
 import com.devonfw.cobigen.api.util.TemplatesJarUtil;
 import com.devonfw.cobigen.eclipse.common.exceptions.GeneratorCreationException;
@@ -61,9 +62,12 @@ public class GeneratorWrapperFactory {
    * @throws GeneratorProjectNotExistentException if the generator configuration project does not exist
    * @throws InvalidInputException if the selection includes non supported input types or is composed in a non supported
    *         combination of inputs.
+   * @throws UpgradeTemplatesNotificationException
+   * @throws InvalidConfigurationException
    */
   public static CobiGenWrapper createGenerator(ISelection selection, IProgressMonitor monitor)
-      throws GeneratorCreationException, GeneratorProjectNotExistentException, InvalidInputException {
+      throws GeneratorCreationException, GeneratorProjectNotExistentException, InvalidInputException,
+      InvalidConfigurationException, UpgradeTemplatesNotificationException {
 
     List<Object> extractedInputs = extractValidEclipseInputs(selection);
 
@@ -203,8 +207,10 @@ public class GeneratorWrapperFactory {
    * @throws GeneratorProjectNotExistentException if the generator configuration folder does not exist
    * @throws InvalidConfigurationException if the context configuration is not valid
    * @throws GeneratorCreationException if the generator configuration project does not exist
+   * @throws UpgradeTemplatesNotificationException
    */
-  private static CobiGen initializeGenerator() throws InvalidConfigurationException, GeneratorCreationException {
+  private static CobiGen initializeGenerator() throws InvalidConfigurationException, GeneratorCreationException,
+      GeneratorProjectNotExistentException, UpgradeTemplatesNotificationException {
 
     try {
       ResourcesPluginUtil.refreshConfigurationProject();
@@ -220,7 +226,9 @@ public class GeneratorWrapperFactory {
 
       // If it is not valid, we should use the jar
       if (null == generatorProj.getLocationURI() || !configJavaProject.exists()) {
-        Path templatesDirectoryPath = CobiGenPaths.getTemplatesFolderPath();
+
+        Path templatesDirectoryPath = createWidgetFromException();
+
         Path jarPath = TemplatesJarUtil.getJarFile(false, templatesDirectoryPath);
         boolean fileExists = (jarPath != null && Files.exists(jarPath));
         if (!fileExists) {
@@ -233,11 +241,23 @@ public class GeneratorWrapperFactory {
       }
     } catch (CoreException e) {
       throw new GeneratorCreationException("An eclipse internal exception occurred", e);
-    } catch (Throwable e) {
+    } catch (GeneratorCreationException e) {
       throw new GeneratorCreationException(
           "Configuration source could not be read.\nIf you were updating templates, it may mean"
               + " that you have no internet connection.",
           e);
     }
+  }
+
+  private static Path createWidgetFromException() {
+
+    try {
+      return CobiGenPaths.getTemplatesFolderPath();
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      // Create UI WARN MESSAGE TO NOTIFY USER FOR UPGRADE
+      PlatformUIUtil.openErrorDialog("You are using an old Templates version!", e);
+    }
+    return null;
   }
 }
